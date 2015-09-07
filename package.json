@@ -1,0 +1,36 @@
+{
+  "name": "log-hunter",
+  "description": "Webpack loader that warns and/or removes forgotten console.log statments",
+  "version": "0.0.1",
+  "author": "Ryan Norman <rsnorman15@gmail.com> (http://github.com/rsnorman)",
+  "keywords": [
+    "webpack",
+    "loader",
+    "console.log",
+    "remove"
+  ],
+  "repository" : {
+      "type": "git",
+      "url": "https://rsnorman@github.com/rsnorman/log_hunter.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "istanbul": "0.3.15",
+    "mocha": "2.2.5",
+    "supertest": "1.0.1"
+  },
+  "license": "MIT",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js"
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "mocha --require test/support/env --reporter spec --bail --check-leaks test/",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --require test/support/env --reporter dot --check-leaks test/",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --require test/support/env --reporter spec --check-leaks test/"
+  }
+}
