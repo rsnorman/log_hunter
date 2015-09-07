@@ -9,15 +9,15 @@
     "console.log",
     "remove"
   ],
-  "repository" : {
-      "type": "git",
-      "url": "https://rsnorman@github.com/rsnorman/log_hunter.git"
+  "repository": {
+    "type": "git",
+    "url": "https://rsnorman@github.com/rsnorman/log_hunter.git"
   },
-  "dependencies": {},
   "devDependencies": {
     "istanbul": "0.3.15",
     "mocha": "2.2.5",
-    "supertest": "1.0.1"
+    "supertest": "1.0.1",
+    "should": "^7.1.0"
   },
   "license": "MIT",
   "files": [
