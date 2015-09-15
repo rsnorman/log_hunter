@@ -1,22 +1,34 @@
 var LOG_MATCHER = /console.log(?:.(?:call|apply))?\(.*?\);?/g;
 
+function splitLines(content) {
+  return content.split('\n');
+}
+
+function mapLinesToLineNumber(line, index) {
+  return {
+    line: line,
+    lineNumber: index + 1
+  };
+}
+
+function collectMatches(lineData) {
+  return (lineData.line.match(LOG_MATCHER) || []).map(function(match) {
+    return {
+      lineNumber: lineData.lineNumber,
+      content: match
+    };
+  });
+}
+
+function filterUnmatchedLines(lineMatches, lineMatchData) {
+  return lineMatches.concat(lineMatchData);
+}
+
 function findAllCalls(content) {
-  var _i, _len, lines, matches, foundCalls;
-  foundCalls = [];
-  lines = content.split('\n');
-
-  for ( _i = 0, _len = lines.length; _i < _len; _i++ ) {
-    if ( matches = lines[_i].match(LOG_MATCHER) ) {
-      foundCalls = foundCalls.concat(matches.map(function(match) {
-        return {
-          lineNumber: _i + 1,
-          content: match
-        };
-      }));
-    }
-  }
-
-  return foundCalls;
+  return splitLines(content)
+  .map(mapLinesToLineNumber)
+  .map(collectMatches)
+  .reduce(filterUnmatchedLines, []);
 }
 
 function removeAllCalls(content) {
