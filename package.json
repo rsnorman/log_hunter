@@ -17,13 +17,15 @@
     "istanbul": "0.3.15",
     "mocha": "2.2.5",
     "supertest": "1.0.1",
-    "should": "^7.1.0"
+    "should": "^7.1.0",
+    "sinon": "^1.16.1"
   },
   "license": "MIT",
   "files": [
     "LICENSE",
     "README.md",
-    "index.js"
+    "index.js",
+    "lib/**/*"
   ],
   "engines": {
     "node": ">= 0.10.0"
@@ -34,7 +36,10 @@
     "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --require test/support/env --reporter spec --check-leaks test/"
   },
   "dependencies": {
-    "loader-utils": "^0.2.11",
-    "sinon": "^1.16.1"
-  }
+    "loader-utils": "^0.2.11"
+  },
+  "bugs": {
+    "url": "https://github.com/rsnorman/log_hunter/issues"
+  },
+  "homepage": "https://github.com/rsnorman/log_hunter"
 }
