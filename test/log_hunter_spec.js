@@ -50,9 +50,7 @@ describe('logHunter', function() {
       it('does not remove the "console.log" statement', function() {
         var result = logHunter(
           'function() {console.log(\'here\');}',
-          {
-            remove: false
-          }
+          false
         );
         result.content.should.equal('function() {console.log(\'here\');}');
       });
