@@ -1,5 +1,5 @@
 var should = require('should');
-var logHunter = require('..');
+var logHunter = require('../lib/log_hunter');
 
 describe('logHunter', function() {
   describe('with no "console.log" statements', function() {
@@ -66,11 +66,11 @@ describe('logHunter', function() {
         });
 
         it('returns position of only "console.log" statement', function() {
-          result.lines[0].lineNumber.should.equal(1);
+          result.occurrences[0].lineNumber.should.equal(1);
         });
 
         it('returns text of only "console.log" statement', function() {
-          result.lines[0].content.should.equal('console.log(\'here\');');
+          result.occurrences[0].content.should.equal('console.log(\'here\');');
         });
       });
 
@@ -88,19 +88,19 @@ describe('logHunter', function() {
         });
 
         it('returns position of first "console.log" statement', function() {
-          result.lines[0].lineNumber.should.equal(3);
+          result.occurrences[0].lineNumber.should.equal(3);
         });
 
         it('returns text of first "console.log" statement', function() {
-          result.lines[0].content.should.equal('console.log(\'before: \', i);');
+          result.occurrences[0].content.should.equal('console.log(\'before: \', i);');
         });
 
         it('returns position of second "console.log" statement', function() {
-          result.lines[1].lineNumber.should.equal(5);
+          result.occurrences[1].lineNumber.should.equal(5);
         });
 
         it('returns text of second "console.log" statement', function() {
-          result.lines[1].content.should.equal('console.log(\'after: \', i);');
+          result.occurrences[1].content.should.equal('console.log(\'after: \', i);');
         });
       });
 
@@ -118,19 +118,19 @@ describe('logHunter', function() {
         });
 
         it('returns position of first "console.log" statement', function() {
-          result.lines[0].lineNumber.should.equal(1);
+          result.occurrences[0].lineNumber.should.equal(1);
         });
 
         it('returns text of first "console.log" statement', function() {
-          result.lines[0].content.should.equal('console.log(\'before: \', i);');
+          result.occurrences[0].content.should.equal('console.log(\'before: \', i);');
         });
 
         it('returns position of second "console.log" statement', function() {
-          result.lines[1].lineNumber.should.equal(1);
+          result.occurrences[1].lineNumber.should.equal(1);
         });
 
         it('returns text of second "console.log" statement', function() {
-          result.lines[1].content.should.equal('console.log(\'after: \', i);');
+          result.occurrences[1].content.should.equal('console.log(\'after: \', i);');
         });
       });
     });
